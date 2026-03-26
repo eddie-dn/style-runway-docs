@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style Runway Event Proposal v4 — Complete Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FDFBF7;--bg2:#F5F1EA;--tx:#2C2C2A;--tx2:#5F5E5A;--tx3:#888780;--bd:rgba(0,0,0,.08);--teal:#0F6E56;--teal-bg:#E1F5EE;--purple:#534AB7;--purple-bg:#EEEDFE;--coral:#D85A30;--coral-bg:#FAECE7;--amber:#BA7517;--amber-bg:#FAEEDA;--blue:#185FA5;--blue-bg:#E6F1FB;--red:#A32D2D;--red-bg:#FCEBEB;--pink:#993556;--pink-bg:#FBEAF0;--green:#3B6D11;--green-bg:#EAF3DE}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);line-height:1.65;padding:40px 20px 80px}
+.c{max-width:800px;margin:0 auto}
+.hdr{text-align:center;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--bd)}
+.hdr h1{font-family:'DM Serif Display',serif;font-size:30px;font-weight:400;margin-bottom:4px}
+.hdr .sub{font-size:14px;color:var(--tx2)}
+.hdr .meta{display:flex;gap:20px;justify-content:center;margin-top:12px;font-size:12px;color:var(--tx3)}
+.toc{background:var(--bg2);border-radius:12px;padding:16px 20px;margin-bottom:36px}
+.toc-t{font-weight:700;font-size:11px;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.toc ol{padding-left:18px}.toc li{font-size:13px;color:var(--tx2);padding:2px 0}.toc a{color:var(--teal);text-decoration:none}
+.sec{margin-bottom:48px}
+.sec-n{font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.sec h2{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;margin-bottom:6px}
+.sec-intro{font-size:14px;color:var(--tx2);margin-bottom:14px;line-height:1.7}
+.card{border:1px solid var(--bd);border-radius:10px;padding:14px 18px;margin-bottom:10px;background:#fff}
+.card-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.card .d{font-size:13px;color:var(--tx);line-height:1.75}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+th{text-align:left;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.3px;color:var(--tx3);padding:7px 8px;border-bottom:2px solid var(--bd)}
+td{padding:7px 8px;border-bottom:1px solid var(--bd);vertical-align:top}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:2px 9px;border-radius:11px;font-size:11px;font-weight:600}
+.b-t{background:var(--teal-bg);color:var(--teal)}.b-p{background:var(--purple-bg);color:var(--purple)}
+.b-a{background:var(--amber-bg);color:var(--amber)}.b-c{background:var(--coral-bg);color:var(--coral)}
+.b-b{background:var(--blue-bg);color:var(--blue)}.b-r{background:var(--red-bg);color:var(--red)}
+.b-k{background:var(--pink-bg);color:var(--pink)}.b-g{background:var(--green-bg);color:var(--green)}
+.hl{border-radius:10px;padding:14px 18px;margin:12px 0;font-size:13px;line-height:1.75}
+.hl-g{background:var(--teal-bg);color:#085041}.hl-a{background:var(--amber-bg);color:#633806}
+.hl-p{background:var(--purple-bg);color:#3C3489}.hl-r{background:var(--red-bg);color:#791F1F}
+.hl-k{background:var(--pink-bg);color:#72243E}
+.rank{display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600}
+.r-new{background:#F1EFE8;color:#5F5E5A}.r-sty{background:var(--blue-bg);color:var(--blue)}
+.r-des{background:var(--amber-bg);color:var(--amber)}.r-cd{background:var(--purple-bg);color:var(--purple)}
+.r-ico{background:var(--pink-bg);color:var(--pink)}.r-que{background:var(--red-bg);color:var(--red)}
+.rt{display:inline-block;padding:1px 6px;border-radius:5px;font-size:11px;font-weight:600}
+.rt-sss{background:var(--teal-bg);color:var(--teal)}.rt-ss{background:var(--teal-bg);color:var(--teal)}
+.rt-s{background:var(--amber-bg);color:var(--amber)}.rt-a{background:var(--amber-bg);color:var(--amber)}
+.rt-b{background:var(--bg2);color:var(--tx3)}
+.tag-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.tag-col{padding:10px 12px;border-radius:8px}
+.tc-topic{background:var(--purple-bg)}.tc-style{background:var(--amber-bg)}
+.tl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-bottom:4px}
+.tl-t{color:var(--purple)}.tl-s{color:var(--amber)}
+.ti{font-size:12px;color:var(--tx);padding:2px 0;display:flex;justify-content:space-between}
+.ti-m{font-weight:600}
+.divider{border:none;border-top:1px solid var(--bd);margin:40px 0}
+.ht{color:var(--red);font-size:14px}
+svg text{font-family:'DM Sans',sans-serif}
+@media print{body{padding:20px}.card,.sec{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="c">
+
+<div style="display:flex;gap:8px;margin-bottom:20px;font-size:12px">
+<a href="nav.html" style="color:#0F6E56;text-decoration:none;padding:4px 10px;border:1px solid rgba(0,0,0,.08);border-radius:6px">Hub</a>
+<a href="index.html" style="color:#fff;background:#0F6E56;text-decoration:none;padding:4px 10px;border-radius:6px">Proposal</a>
+<a href="mechanics.html" style="color:#534AB7;text-decoration:none;padding:4px 10px;border:1px solid rgba(0,0,0,.08);border-radius:6px">Mechanics Guide</a>
+</div>
+
+<!-- ======================== HEADER ======================== -->
+<div class="hdr">
+<h1>Style Runway — Event Proposal v4</h1>
+<div class="sub">Fashion Game Portfolio LiveOps Event Blueprint — Complete A→Z</div>
+<div class="meta">
+<span>Smartmove &bull; 10 Titles &bull; CW-powered</span>
+<span>Duration: 10-day event</span>
+<span>Pilot: 2 SP (T1 + MENA)</span>
+</div>
+</div>
+
+<!-- ======================== TOC ======================== -->
+<div class="toc">
+<div class="toc-t">Table of contents</div>
+<ol>
+<li><a href="#s1">Current state diagnostic</a></li>
+<li><a href="#s2">Onboarding — 2 phases</a></li>
+<li><a href="#s3">Dual-tag item system (Topic + Style)</a></li>
+<li><a href="#s4">10-day event — 3 fixed sub-themes</a></li>
+<li><a href="#s5">Scoring — 5 sources, 1 formula</a></li>
+<li><a href="#s6">Heart voting + love ratio bonus</a></li>
+<li><a href="#s7">Rank system + endorsement</a></li>
+<li><a href="#s8">Event shop — 3 tabs + collection tracker</a></li>
+<li><a href="#s9">Economy + encore + lifecycle</a></li>
+<li><a href="#s10">Monetization — 7 layers</a></li>
+<li><a href="#s11">Achievements — task + rank milestones</a></li>
+</ol>
+<div style="font-size:11px;color:var(--tx3);margin-top:6px">Companion doc: <em>Event Mechanics & Scoring Guide</em> (chi tiết formula, simulation, craft flow)</div>
+</div>
+
+<!-- ======================== S1: DIAGNOSTIC ======================== -->
+<div class="sec" id="s1">
+<div class="sec-n">Section 01</div>
+<h2>Current state diagnostic</h2>
+<p class="sec-intro">7 layers cần có cho LiveOps — đánh giá trước khi build.</p>
+
+<table>
+<thead><tr><th>Layer</th><th>Status</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Core loop</td><td><span class="pill b-a">Broken</span></td><td>Dress-up có. Scoring backend opaque — users không hiểu score. Không feedback.</td></tr>
+<tr><td>Store</td><td><span class="pill b-a">Dormant</span></td><td>Store có nhưng không entry flow, không link từ gameplay. Dead-end page.</td></tr>
+<tr><td>Onboarding</td><td><span class="pill b-r">Missing</span></td><td>Generic cho tất cả. Không localize, không style customization.</td></tr>
+<tr><td>Social / voting</td><td><span class="pill b-r">Missing</span></td><td>Không peer validation, không community, không leaderboard.</td></tr>
+<tr><td>LiveOps events</td><td><span class="pill b-r">Missing</span></td><td>Event = cùng mechanic main loop. Không special mechanic.</td></tr>
+<tr><td>Monetization</td><td><span class="pill b-r">Risk</span></td><td>90% revenue từ ads (interstitial + rewarded). IAP path blocked.</td></tr>
+<tr><td>Player data</td><td><span class="pill b-r">Missing</span></td><td>Firebase standard only. Không custom tracking, không segment.</td></tr>
+</tbody>
+</table>
+
+<div class="hl hl-r"><strong>Verdict:</strong> 2 broken/dormant, 5 missing. Event chạy riêng song song main game — build modules, test pool trước, scale sau. Ads KHÔNG bị cắt — IAP là additive.</div>
+
+<svg width="100%" viewBox="0 0 760 70" style="margin:12px 0">
+<rect x="10" y="10" width="130" height="40" rx="8" fill="#FCEBEB" stroke="#F09595"/>
+<text x="75" y="34" text-anchor="middle" font-size="11" font-weight="600" fill="#A32D2D">Current state</text>
+<text x="148" y="34" font-size="14" fill="#888">→</text>
+<rect x="158" y="10" width="130" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="223" y="34" text-anchor="middle" font-size="11" font-weight="600" fill="#854F0B">Fix onboarding</text>
+<text x="296" y="34" font-size="14" fill="#888">→</text>
+<rect x="306" y="10" width="130" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="371" y="34" text-anchor="middle" font-size="11" font-weight="600" fill="#0F6E56">Build event line</text>
+<text x="444" y="34" font-size="14" fill="#888">→</text>
+<rect x="454" y="10" width="110" height="40" rx="8" fill="#EEEDFE" stroke="#AFA9EC"/>
+<text x="509" y="34" text-anchor="middle" font-size="11" font-weight="600" fill="#534AB7">Test + measure</text>
+<text x="572" y="34" font-size="14" fill="#888">→</text>
+<rect x="582" y="10" width="80" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="622" y="34" text-anchor="middle" font-size="11" font-weight="600" fill="#0F6E56">Scale</text>
+</svg>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S2: ONBOARDING ======================== -->
+<div class="sec" id="s2">
+<div class="sec-n">Section 02</div>
+<h2>Onboarding — 2 phases</h2>
+<p class="sec-intro">Phase 1 ship trước (không cần UA). Phase 2 thêm creative tag khi UA team sẵn sàng. Cả 2 dùng chung luồng 2-pack offer.</p>
+
+<div class="card" style="border-left:4px solid var(--teal);border-radius:0 10px 10px 0">
+<div class="card-l" style="color:var(--teal)">Phase 1 — Geo + climate + DNA (ship trước)</div>
+<div class="d">
+<strong>Step 1:</strong> Store location → country → Zone Season Map → chọn first outfit theo culture + climate.<br>
+VD: VN Tết = áo dài, Indonesia tháng 7 = monsoon look, US December = holiday party.<br><br>
+<strong>Step 2:</strong> Style DNA Quiz — 5 câu A/B chọn outfit → output Style DNA (VD: Elegant 60%, Street 30%).<br><br>
+<strong>Step 3:</strong> Offer 2 IAP packs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pack A = based on Style DNA (VD: DNA = Elegant → "Elegant Starter Pack")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pack B = based on culture/season (VD: VN Tết → "Lunar New Year Pack")<br><br>
+<strong>Step 4:</strong> Giới thiệu Hall of Fame — "Login 7 ngày liên tiếp = nhận 1 bộ sưu tập!"
+</div>
+</div>
+
+<svg width="100%" viewBox="0 0 760 70" style="margin:10px 0">
+<rect x="10" y="10" width="95" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="57" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#0F6E56">Install</text>
+<text x="57" y="38" text-anchor="middle" font-size="9" fill="#0F6E56">Geo + climate</text>
+<text x="112" y="34" font-size="12" fill="#888">→</text>
+<rect x="120" y="10" width="95" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="167" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#0F6E56">Culture</text>
+<text x="167" y="38" text-anchor="middle" font-size="9" fill="#0F6E56">outfit</text>
+<text x="222" y="34" font-size="12" fill="#888">→</text>
+<rect x="230" y="10" width="95" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="277" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Style DNA</text>
+<text x="277" y="38" text-anchor="middle" font-size="9" fill="#854F0B">5 questions</text>
+<text x="332" y="34" font-size="12" fill="#888">→</text>
+<rect x="340" y="10" width="100" height="40" rx="8" fill="#EEEDFE" stroke="#AFA9EC"/>
+<text x="390" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#534AB7">Pack A</text>
+<text x="390" y="38" text-anchor="middle" font-size="9" fill="#534AB7">DNA-based</text>
+<text x="443" y="26" font-size="10" fill="#888">+</text>
+<rect x="455" y="10" width="100" height="40" rx="8" fill="#EEEDFE" stroke="#AFA9EC"/>
+<text x="505" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#534AB7">Pack B</text>
+<text x="505" y="38" text-anchor="middle" font-size="9" fill="#534AB7">Culture/season</text>
+<text x="562" y="34" font-size="12" fill="#888">→</text>
+<rect x="570" y="10" width="100" height="40" rx="8" fill="#FBEAF0" stroke="#ED93B1"/>
+<text x="620" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#993556">Hall of</text>
+<text x="620" y="38" text-anchor="middle" font-size="9" fill="#993556">Fame</text>
+</svg>
+
+<div class="card" style="border-left:4px solid var(--purple);border-radius:0 10px 10px 0">
+<div class="card-l" style="color:var(--purple)">Phase 2 — thêm UA creative tag (khi UA team sẵn sàng)</div>
+<div class="d">
+<strong>Step 1:</strong> User thấy UA creative (VD: ad về "Fantasy Night") → install → game bắt creative tag từ Adjust/AppsFlyer.<br><br>
+<strong>Step 2:</strong> Creative tag → chỉ định topic đầu tiên users được chơi = match creative đã xem. User trải nghiệm đúng thứ đã hấp dẫn họ.<br><br>
+<strong>Step 3:</strong> Style DNA Quiz (vẫn 5 câu).<br><br>
+<strong>Step 4:</strong> Offer 2 IAP packs — logic thông minh:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pack A = based on DNA result<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Pack B = based on creative tag topic<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<strong>Nếu DNA trùng creative tag</strong> → thay Pack B = culture/season pack hoặc complementary style.<br><br>
+<strong>Step 5:</strong> Giới thiệu Hall of Fame.
+</div>
+</div>
+
+<div class="hl hl-a"><strong>2-pack logic:</strong> Luồng 2 packs sẵn sàng từ Phase 1. Phase 2 chỉ thêm tín hiệu creative tag → thay đổi Pack B source. Code framework giống nhau.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S3: DUAL-TAG ITEMS ======================== -->
+<div class="sec" id="s3">
+<div class="sec-n">Section 03</div>
+<h2>Dual-tag item system — Topic + Style</h2>
+<p class="sec-intro">Mỗi item trong CW có 2 hệ tag độc lập. Topic = "item thuộc event nào" (FCS Pillar 1). Style = "item giỏi aesthetic nào" (FCS Pillar 3).</p>
+
+<div class="tag-grid">
+<div class="tag-col tc-topic">
+<div class="tl tl-t">Topic tags (= FCS Pillar 1: Theme)</div>
+<div class="ti ti-m">Main topic: Vacation</div>
+<div class="ti">Sub topic: Summer Beach</div>
+<div style="font-size:11px;color:var(--purple);margin-top:6px">6 Major Categories:<br>Celebrations, Daily Life, Vacation,<br>Romance & Social, Runway, Active<br>~31 sub-themes bên dưới</div>
+</div>
+<div class="tag-col tc-style">
+<div class="tl tl-s">Style ratings (= FCS Pillar 3: Attributes)</div>
+<div class="ti ti-m">Main style: Elegant <span class="rt rt-ss">SS</span></div>
+<div class="ti">Style 2: Casual <span class="rt rt-a">A</span></div>
+<div class="ti">Style 3: Sexy <span class="rt rt-b">B</span></div>
+<div style="font-size:11px;color:var(--amber);margin-top:6px">Rating: B → A → S → SS → SSS (no C)<br>Star caps: 3★=A, 4★=S, 5★=SS, 6★=SSS</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">Example items</div>
+<table>
+<thead><tr><th>Item</th><th>Stars</th><th>Main topic</th><th>Sub topic</th><th>Main style</th><th>Style 2</th><th>Style 3</th></tr></thead>
+<tbody>
+<tr><td>Blue Maxi Dress</td><td>4★</td><td>Vacation</td><td>Summer Beach</td><td>Elegant <span class="rt rt-s">S</span></td><td>Casual <span class="rt rt-a">A</span></td><td>Sexy <span class="rt rt-b">B</span></td></tr>
+<tr><td>Red Leather Jacket</td><td>3★</td><td>Daily Life</td><td>Street Night</td><td>Cool <span class="rt rt-a">A</span></td><td>Sexy <span class="rt rt-b">B</span></td><td>Casual <span class="rt rt-b">B</span></td></tr>
+<tr><td>Golden Gown</td><td>6★</td><td>Runway</td><td>Awards Night</td><td>Elegant <span class="rt rt-sss">SSS</span></td><td>Sexy <span class="rt rt-ss">SS</span></td><td>Sweet <span class="rt rt-s">S</span></td></tr>
+<tr><td>Silk Cocktail Dress</td><td>5★</td><td>Romance & Social</td><td>Moonlight Ball</td><td>Sexy <span class="rt rt-ss">SS</span></td><td>Elegant <span class="rt rt-s">S</span></td><td>Cool <span class="rt rt-a">A</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--amber)">3 item tiers (star caps max rating)</div>
+<table>
+<thead><tr><th>Tier</th><th>Stars</th><th>Max rating</th><th>How to get</th><th>Score potential</th></tr></thead>
+<tbody>
+<tr><td><span class="pill b-t">Free</span></td><td>3★</td><td>A</td><td>Free drop khi vào event</td><td>Pass — Good</td></tr>
+<tr><td><span class="pill b-a">Premium</span></td><td>4-5★</td><td>S — SS</td><td>Coins, craft, cash</td><td>Good — Great</td></tr>
+<tr><td><span class="pill b-p">Premium 6★ / Privilege</span></td><td>6★</td><td>SSS</td><td>IAP only. Try-on via ad hoặc 48h free. Pass holders = exclusive designs.</td><td>Great — Perfect</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="hl hl-a"><strong>CW tagging work:</strong> Mỗi item cần 1 main topic + 1 sub topic + main style (rating) + style 2 (rating) + style 3 (rating). Rating cap bởi star: 3★ max A, 4★ max S, 5★ max SS, 6★ max SSS. Metadata work — spreadsheet → import.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S4: EVENT STRUCTURE ======================== -->
+<div class="sec" id="s4">
+<div class="sec-n">Section 04</div>
+<h2>10-day event — 3 fixed sub-themes</h2>
+<p class="sec-intro">Event = 1 Major Category (VD: Vacation). Chọn 3 sub-themes từ đó. D1-D3 intro lần lượt. D4-D10 cả 3 open.</p>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">3 sub-themes (example: event "Vacation")</div>
+<table>
+<thead><tr><th>Sub-theme</th><th>Intro day</th><th>Sets</th><th>Difficulty</th></tr></thead>
+<tbody>
+<tr><td><span class="pill b-t">Summer Beach</span></td><td>D1</td><td>1 craft/coin + 1 IAP</td><td>Easy — free 3★ đủ Good</td></tr>
+<tr><td><span class="pill b-a">Mountain Retreat</span></td><td>D2</td><td>1 craft/coin + 1 IAP</td><td>Medium — 4-5★ help</td></tr>
+<tr><td><span class="pill b-p">Cruise Night</span></td><td>D3</td><td>1 craft/coin + 1 IAP</td><td>Hard — 6★ for Perfect</td></tr>
+<tr><td colspan="4" style="color:var(--tx2);font-style:italic">D4-D10: all 3 open — users tự do xoay vòng, thu thập, cải thiện</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">Daily player flow</div>
+<div class="d">
+<strong>1. Browse:</strong> Xem items cho sub-theme. Auto-recommend 3 combos (3 free/ngày). Ready sets = tap auto-dress.<br><br>
+<strong>2. Collect:</strong> Free drop, event currency, coins, craft, IAP, ad try-on.<br><br>
+<strong>3. Style:</strong> Phối outfit. Customization upsell (đổi màu/hiệu ứng/phụ kiện $$).<br><br>
+<strong>4. Submit:</strong> Submit → BE chấm → tier (Pass/Good/Great/Perfect) = base score (A).<br><br>
+<strong>5. Vote pool:</strong> Outfit vào feed → users cho tim (1/2/3 <span class="ht">♥</span>) → vote bonus cộng vào score.<br><br>
+<strong>6. Ranking:</strong> Base + votes + love ratio + hour bonus = day total. Tổng 10 ngày x 3 themes = final rank.
+</div>
+</div>
+
+<svg width="100%" viewBox="0 0 760 70" style="margin:12px 0">
+<rect x="10" y="10" width="100" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="60" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#0F6E56">Browse</text>
+<text x="60" y="38" text-anchor="middle" font-size="9" fill="#0F6E56">+ auto-rec</text>
+<text x="118" y="34" font-size="12" fill="#888">→</text>
+<rect x="126" y="10" width="80" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="166" y="34" text-anchor="middle" font-size="10" font-weight="600" fill="#0F6E56">Collect</text>
+<text x="214" y="34" font-size="12" fill="#888">→</text>
+<rect x="222" y="10" width="90" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="267" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Style</text>
+<text x="267" y="38" text-anchor="middle" font-size="9" fill="#854F0B">+ customize</text>
+<text x="320" y="34" font-size="12" fill="#888">→</text>
+<rect x="328" y="10" width="80" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="368" y="34" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Submit</text>
+<text x="416" y="34" font-size="12" fill="#888">→</text>
+<rect x="424" y="10" width="90" height="40" rx="8" fill="#EEEDFE" stroke="#AFA9EC"/>
+<text x="469" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#534AB7">Score</text>
+<text x="469" y="38" text-anchor="middle" font-size="9" fill="#534AB7">Pass→Perfect</text>
+<text x="522" y="34" font-size="12" fill="#888">→</text>
+<rect x="530" y="10" width="90" height="40" rx="8" fill="#FBEAF0" stroke="#ED93B1"/>
+<text x="575" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#993556">Vote</text>
+<text x="575" y="38" text-anchor="middle" font-size="9" fill="#993556">1/2/3 hearts</text>
+<text x="628" y="34" font-size="12" fill="#888">→</text>
+<rect x="636" y="10" width="80" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="676" y="34" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Rank</text>
+</svg>
+
+<div class="card">
+<div class="card-l" style="color:var(--coral)">Catch-up + Hall of Fame</div>
+<div class="d">
+<strong>Catch-up:</strong> Bỏ lỡ ngày trước → làm bù nhưng score x0.7. Đủ để không bỏ cuộc.<br><br>
+<strong>Hall of Fame — login 7 ngày = 1 collection set:</strong><br>
+Mỗi ngày login nhận 1 item thật (dùng được ngay, không ghép mảnh):<br><br>
+Ngày 1: Dress (3★)<br>
+Ngày 2: Shoes (3★)<br>
+Ngày 3: Accessory (3★)<br>
+Ngày 4: Hair (3★)<br>
+Ngày 5: Bag (3★)<br>
+Ngày 6: Hat (3★)<br>
+Ngày 7: Bonus Item (4★)<br><br>
+Đủ 7 ngày = bộ hoàn chỉnh + set harmony bonus. Bỏ lỡ → mua item thiếu bằng event currency hoặc ads.
+</div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S5: SCORING ======================== -->
+<div class="sec" id="s5">
+<div class="sec-n">Section 05</div>
+<h2>Scoring — 5 sources, 1 formula</h2>
+<p class="sec-intro">Scale x100 để điểm trông lớn. 4 nguồn tính ranking (A+B+C+E). 1 nguồn cho economy riêng (D).</p>
+
+<div class="hl hl-g">
+<strong>Formula mỗi ngày per theme:</strong><br><br>
+(<span class="pill b-t">A</span> base score + <span class="pill b-k">B</span> vote hearts) = subtotal<br>
+× <span class="pill b-a">C</span> love ratio bonus % = adjusted total<br>
++ <span class="pill b-p">E</span> rank hour bonus = <strong>Day total</strong><br><br>
++ <span class="pill b-b">D</span> quest rewards → event currency (tách riêng)<br><br>
+Day total x 3 themes x 10 ngày = <strong>Event total</strong> → leaderboard.
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">A — Base score (BE chấm)</div>
+<div class="d">
+Item stars: 3★ = 3,000 / 4★ = 4,000 / 5★ = 5,000 / 6★ = 6,000<br>
+Topic match: main +800 / sub +400 / no match +0<br>
+Style fit: SSS +600 / SS +480 / S +360 / A +240 / B +120<br>
+Unworn: 1st +300 / 2nd +150 / 3rd+ = 0<br>
+Set harmony: +200-500 (items cùng collection)<br>
+Customization: +100-300 (color/effect/accessory)<br><br>
+→ Tier: Pass 1,000-3,900 / Good 4,000-6,400 / Great 6,500-8,400 / Perfect 8,500-10,000
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--pink)">B — Vote hearts</div>
+<div class="d">
+<span class="ht">♥</span> x1 = 100 pts per vote<br>
+<span class="ht">♥♥</span> x2 = 200 pts per vote<br>
+<span class="ht">♥♥♥</span> x3 = 300 pts per vote<br><br>
+Tổng = sum votes x giá trị. Realtime update.
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--amber)">C — Love ratio bonus</div>
+<div class="d">
+% voters cho 3 <span class="ht">♥♥♥</span> → bonus % lên subtotal (A+B):<br><br>
+30-49% voters cho 3 hearts → bonus +5%<br>
+50-69% → bonus +10%<br>
+70-89% → bonus +15%<br>
+90%+ → bonus +20%
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--blue)">D — Quest rewards (= event currency, KHÔNG ranking)</div>
+<div class="d">
+Submit 1 outfit → +200 currency<br>
+Vote 10 outfits → +300 currency<br>
+Try auto-recommend 3x → +100 currency<br>
+Collect 2 items → +200 currency<br>
+Login (Hall of Fame) → +1 item<br><br>
+<strong>Quests = economy. KHÔNG cộng ranking. 2 hệ tách biệt.</strong>
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">E — Rank hour bonus (passive, tự động)</div>
+<div class="d">
+% trên base score (A), tích lũy mỗi giờ. Giữ rank = điểm tự tăng:<br><br>
+<span class="rank r-new">Newcomer</span> +0.25%/h / <span class="rank r-sty">Apprentice</span> +0.50%/h / Stylist +0.75%/h / <span class="rank r-des">Designer</span> +1.00%/h<br>
+Creative Director +1.10%/h / Style Icon +1.25%/h / Trendsetter +1.40%/h / <span class="rank r-que">Fashion Queen</span> +1.75%/h<br><br>
+VD: Designer, base 7,500 pts, 24h → 7,500 x (1% x 24) = +1,800 pts tự động.
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--coral)">Scoring example: Day 5, rank Gold, outfit Great</div>
+<div class="d">
+<strong>A. Base (Great):</strong> 7,500 (stars 5,000 + topic +800 + style SS +480 + unworn +300 + harmony +400 + custom +200)<br>
+<strong>B. Votes:</strong> 12x <span class="ht">♥♥♥</span>=3,600 + 6x <span class="ht">♥♥</span>=1,200 + 3x <span class="ht">♥</span>=300 = +5,700<br>
+<strong>Subtotal:</strong> 13,200<br>
+<strong>C. Love ratio:</strong> 12/21 = 57% → +10% = +1,320<br>
+<strong>Adjusted:</strong> 14,520<br>
+<strong>E. Hour bonus (Designer 1%/h x 24h):</strong> 7,500 x 24% = +1,800<br>
+<strong>Day 5 total: 16,320 pts</strong><br><br>
+<em>+ Quests: 4 done → +800 event currency (mua đồ)</em>
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">10-day simulation: 3 themes combined</div>
+<div class="d">
+Theme A (Summer Beach): 154,620 pts<br>
+Theme B (Mountain Retreat): 124,900 pts<br>
+Theme C (Cruise Night): 108,400 pts<br><br>
+<strong>Event total: 387,920 pts</strong> → event leaderboard ranking.<br><br>
+<em>Điểm tăng dần vì: collect thêm items, vote tích lũy, hour bonus tăng theo rank, harmony bonus.</em>
+</div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S6: VOTING ======================== -->
+<div class="sec" id="s6">
+<div class="sec-n">Section 06</div>
+<h2>Heart voting + love ratio bonus</h2>
+<p class="sec-intro">Voting bằng tim. Feed scroll. Realtime update. Love ratio = % 3-heart → bonus %.</p>
+
+<div class="card">
+<div class="card-l" style="color:var(--pink)">How voting works</div>
+<div class="d">
+<strong>Voter mở tab voting:</strong><br>
+→ Outfits hiện dạng feed scroll (giống Instagram)<br>
+→ Random từ pool cùng sub-theme<br>
+→ Tap cho tim: 1 <span class="ht">♥</span> / 2 <span class="ht">♥♥</span> / 3 <span class="ht">♥♥♥</span><br>
+→ Next outfit → repeat<br><br>
+<strong>Pool distribution:</strong><br>
+→ Mỗi outfit hiện cho ~20-50 voters (cap để fair)<br>
+→ Outfits mới ưu tiên hiện trước<br>
+→ Inhouse team vote trước (seed), users vote lẫn nhau sau<br><br>
+<strong>Voter rewards:</strong> Mỗi 10 votes = earn event currency<br>
+<strong>Score update:</strong> Realtime — mỗi vote mới = điểm tăng ngay
+</div>
+</div>
+
+<svg width="100%" viewBox="0 0 760 70" style="margin:12px 0">
+<rect x="10" y="10" width="120" height="40" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="70" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#0F6E56">Phối outfit</text>
+<text x="70" y="38" text-anchor="middle" font-size="9" fill="#0F6E56">submit</text>
+<text x="138" y="34" font-size="12" fill="#888">→</text>
+<rect x="146" y="10" width="110" height="40" rx="8" fill="#EEEDFE" stroke="#AFA9EC"/>
+<text x="201" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#534AB7">BE chấm</text>
+<text x="201" y="38" text-anchor="middle" font-size="9" fill="#534AB7">base score</text>
+<text x="264" y="34" font-size="12" fill="#888">→</text>
+<rect x="272" y="10" width="110" height="40" rx="8" fill="#FBEAF0" stroke="#ED93B1"/>
+<text x="327" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#993556">Vote pool</text>
+<text x="327" y="38" text-anchor="middle" font-size="9" fill="#993556">1 / 2 / 3 hearts</text>
+<text x="390" y="34" font-size="12" fill="#888">→</text>
+<rect x="398" y="10" width="110" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="453" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Love ratio</text>
+<text x="453" y="38" text-anchor="middle" font-size="9" fill="#854F0B">% bonus</text>
+<text x="516" y="34" font-size="12" fill="#888">→</text>
+<rect x="524" y="10" width="110" height="40" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="579" y="26" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Day total</text>
+<text x="579" y="38" text-anchor="middle" font-size="9" fill="#854F0B">+ hour bonus</text>
+</svg>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S7: RANK + ENDORSEMENT ======================== -->
+<div class="sec" id="s7">
+<div class="sec-n">Section 07</div>
+<h2>Rank system + endorsement</h2>
+<p class="sec-intro">Fashion career ladder. Rank theo % (fair cho mọi số lượng users). Endorsement = tích lũy dài hạn per topic.</p>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">8 career ranks — hour bonus + set rewards</div>
+<table>
+<thead><tr><th>Rank</th><th>Threshold</th><th>Hour bonus</th><th>Reward (cumulative sets)</th></tr></thead>
+<tbody>
+<tr><td><span class="rank r-new">Newcomer</span></td><td>Vừa join</td><td>+0.25%/h</td><td>2 free 3★ items (makeup)</td></tr>
+<tr><td><span class="rank r-sty">Apprentice</span></td><td>Top 90%</td><td>+0.50%/h</td><td>+ 1 set 3★ (3 items: dress + shoes + accessory)</td></tr>
+<tr><td><span class="rank r-des">Stylist</span></td><td>Top 75%</td><td>+0.75%/h</td><td>+ 1 set 3★ (4 items: dress + shoes + bag + hair)</td></tr>
+<tr><td><span class="rank r-cd">Designer</span></td><td>Top 50%</td><td>+1.00%/h</td><td>+ 1 set 4★ (3 items) + 1 effect unlock</td></tr>
+<tr><td><span class="rank r-ico">Creative Director</span></td><td>Top 30%</td><td>+1.10%/h</td><td>+ 1 set 4★ (4 items) + title badge</td></tr>
+<tr><td><span class="rank r-que">Style Icon</span></td><td>Top 15%</td><td>+1.25%/h</td><td>+ 1 set 5★ (3 items) + animated frame</td></tr>
+<tr><td><span class="rank r-que">Trendsetter</span></td><td>Top 10%</td><td>+1.40%/h</td><td>+ 1 set 5★ (4 items) + exclusive frame</td></tr>
+<tr><td><span class="rank r-que">Fashion Queen</span></td><td>Top 5%</td><td>+1.75%/h</td><td>+ 1 set 6★ (4 items) + crown + Queen title vĩnh viễn</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="hl hl-p"><strong>Hour bonus giải thích:</strong> % tính trên base score (A), tích lũy mỗi giờ tự động. VD: Designer rank, base 7,500 pts, giữ 24h → bonus = 7,500 x (1% x 24) = 7,500 x 24% = +1,800 pts. Rank cao = điểm tự tăng nhanh hơn. Rewards cumulative: đạt Designer = nhận quà Newcomer + Apprentice + Stylist + Designer.</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">Fairness: đông quá + old vs new</div>
+<div class="d">
+<strong>Rank theo %:</strong> 1,000 hay 100,000 users → tỷ lệ đạt rank KHÔNG đổi. Gap nhỏ: Newcomer → top 90% (Apprentice) = chỉ cần submit + vote. "First win" dễ đạt.<br><br>
+<strong>Season legacy:</strong> Mùa kết thúc → điểm RESET. Chỉ giữ legacy bonus nhỏ trên base score (A):<br><br>
+Newcomer → +0% / Apprentice → +1% / Stylist → +2% / Designer → +4%<br>
+Creative Director → +6% / Style Icon → +8% / Trendsetter → +10% / Fashion Queen → +12%<br><br>
+Gap max 12% — new users hoàn toàn tranh nổi. Không compound.
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">2 loại leaderboard</div>
+<table>
+<thead><tr><th></th><th>Event leaderboard</th><th>Endorsement leaderboard</th></tr></thead>
+<tbody>
+<tr><td>Scope</td><td>1 event (10 ngày)</td><td>Nhiều events cùng topic (8-10 tuần)</td></tr>
+<tr><td>Score</td><td>Tổng 3 themes trong event</td><td>Tích lũy event totals</td></tr>
+<tr><td>Reset</td><td>Mỗi event mới</td><td>Mỗi season</td></tr>
+<tr><td>Queen</td><td>Queen of event</td><td>Queen of "Vacation" topic</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S8: SHOP ======================== -->
+<div class="sec" id="s8">
+<div class="sec-n">Section 08</div>
+<h2>Event shop — 3 tabs + collection tracker</h2>
+<p class="sec-intro">Tách khỏi main store. 3 tabs. Filter Topic (purple) vs Style (amber) riêng biệt.</p>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">3 shop tabs</div>
+<div class="d">
+<strong>Tab 1: Craft shop</strong><br>
+→ Items 3-5★ (coins / event currency / craft)<br>
+→ Today's picks (auto-curated theo daily theme)<br>
+→ Ready sets (tap = auto-dress)<br>
+→ Craft recipes: browse → xem materials cần → tap "Get" material thiếu → mua → quay lại craft<br><br>
+<strong>Tab 2: IAP shop</strong><br>
+→ Items 6★, packs, bundles, try-on shelf, event currency packs, season pass<br><br>
+<strong>Tab 3: Collection</strong><br>
+→ Track per set: "5/7 items collected" + progress bar<br>
+→ Tap missing item → mua/craft trực tiếp<br>
+→ Complete set = harmony bonus
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">Filters (tách Topic vs Style)</div>
+<div class="d">
+<strong>Topic tags (purple):</strong> Summer Beach / Mountain Retreat / Cruise Night / All<br>
+<strong>Style tags (amber):</strong> Elegant / Cool / Casual / Sexy / Sweet / All (sorted SSS→B)<br>
+<strong>Other:</strong> Star tier (3★/4-5★/6★) / Worn-unworn / Affordable now<br><br>
+Mỗi item hiện CẢ 2 tag: topic (purple) + style (amber).
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--coral)">Collection tracker example</div>
+<div class="d">
+<strong>Coastal Elegance set (Summer Beach)</strong> — 5/7 items<br>
+[Dress ✓] [Shoes ✓] [Bag ✓] [Hat ✓] [Ring ✓] [Hair: 200c] [Necklace: Craft]<br><br>
+<strong>Sunset Breeze set (Summer Beach)</strong> — 2/6 items<br>
+[Top ✓] [Skirt ✓] [Shoes: 150c] [Bag: 180c] [Earring: Craft] [Bracelet: IAP]<br><br>
+Tap item thiếu → mua/craft trực tiếp. Full set = harmony bonus.
+</div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S9: ECONOMY ======================== -->
+<div class="sec" id="s9">
+<div class="sec-n">Section 09</div>
+<h2>Economy + encore + lifecycle</h2>
+
+<div class="card">
+<div class="card-l" style="color:var(--coral)">Event currency (temporary)</div>
+<div class="d">
+<strong>Earn from:</strong> quests, voting (per 10 votes), scoring milestones, Hall of Fame.<br>
+<strong>Spend on:</strong> items 3-5★, craft materials. 6★ = IAP only.<br>
+<strong>Expiry:</strong> Reset khi event kết thúc. Spend it or lose it.<br>
+<strong>Buy packs:</strong> $0.99 (100) / $4.99 (600) / $9.99 (1500).
+</div>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--amber)">Item lifecycle + encore</div>
+<div class="d">
+<strong>During event:</strong> Items available in shop. Full scoring bonus.<br>
+<strong>Event ends:</strong> Items leave shop. Đã mua = sở hữu vĩnh viễn.<br>
+<strong>Encore (3-4 tuần sau):</strong> Items return cho users chưa sở hữu. Price = 120%.<br>
+<strong>Season bonus decay:</strong> Current season = 100%. Last season = 70%. 2+ = 50%.<br>
+<strong>Unworn decay:</strong> 1st use = full. 2nd = 50%. 3rd+ = 0%. Reset mỗi season.
+</div>
+</div>
+
+<svg width="100%" viewBox="0 0 700 60" style="margin:12px 0">
+<rect x="10" y="8" width="120" height="36" rx="8" fill="#E1F5EE" stroke="#5DCAA5"/>
+<text x="70" y="30" text-anchor="middle" font-size="10" font-weight="600" fill="#0F6E56">Event live</text>
+<text x="138" y="30" font-size="12" fill="#888">→</text>
+<rect x="146" y="8" width="120" height="36" rx="8" fill="#FAEEDA" stroke="#FAC775"/>
+<text x="206" y="30" text-anchor="middle" font-size="10" font-weight="600" fill="#854F0B">Event ends</text>
+<text x="274" y="30" font-size="12" fill="#888">→</text>
+<rect x="282" y="8" width="130" height="36" rx="8" fill="#FAECE7" stroke="#F0997B"/>
+<text x="347" y="30" text-anchor="middle" font-size="10" font-weight="600" fill="#993C1D">Encore 120%</text>
+<text x="420" y="30" font-size="12" fill="#888">→</text>
+<rect x="428" y="8" width="120" height="36" rx="8" fill="#F1EFE8" stroke="#D3D1C7"/>
+<text x="488" y="30" text-anchor="middle" font-size="10" font-weight="600" fill="#5F5E5A">Archive</text>
+</svg>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S10: MONETIZATION ======================== -->
+<div class="sec" id="s10">
+<div class="sec-n">Section 10</div>
+<h2>Monetization — 7 layers</h2>
+<p class="sec-intro">7 revenue layers đồng thời. Ads KHÔNG bị cắt — IAP additive.</p>
+
+<div class="card">
+<div class="card-l" style="color:var(--purple)">7 layers</div>
+<table>
+<thead><tr><th>#</th><th>Layer</th><th>Price</th><th>Target</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><span class="pill b-p">IAP items</span> Premium 6★</td><td>$2.99-$14.99</td><td>Whales + dolphins</td></tr>
+<tr><td>2</td><td><span class="pill b-p">Customization</span> Color/effect/accessory</td><td>$0.49-$0.99</td><td>All spenders</td></tr>
+<tr><td>3</td><td><span class="pill b-c">Ad try-on</span> Watch ad = try premium 1 challenge</td><td>Free (ad rev)</td><td>F2P → IAP bridge</td></tr>
+<tr><td>4</td><td><span class="pill b-c">Ad assists</span> Hint, bonus item, extra auto-rec</td><td>Free (ad rev)</td><td>All F2P</td></tr>
+<tr><td>5</td><td><span class="pill b-p">Try-on convert</span> 48h expires → discount offer</td><td>$0.99-$4.99</td><td>Endowment Effect</td></tr>
+<tr><td>6</td><td><span class="pill b-a">Currency packs</span> Buy event currency</td><td>$0.99-$9.99</td><td>Impatient shoppers</td></tr>
+<tr><td>7</td><td><span class="pill b-k">Season pass</span> Bonus currency, exclusives, unlimited auto-rec</td><td>$4.99-$9.99</td><td>Regular players</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">Conversion funnel + ads protection</div>
+<div class="d">
+<strong>Price ladder:</strong> $0 (ads) → $0.49 (custom) → $0.99 (currency/try-on) → $2.99 (item) → $4.99 (pass) → $9.99+. No big jump.<br><br>
+<strong>Ads protection:</strong> Interstitials giữ nguyên. 6 rewarded placements mới = ADDITIVE. Revenue = ads (giữ + tăng) + IAP (mới).<br><br>
+<strong>Pilot:</strong> SP #1 T1 (US/UK/DE) focus IAP conversion. SP #2 MENA focus engagement + retention.
+</div>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- ======================== S11: ACHIEVEMENTS ======================== -->
+<div class="sec" id="s11">
+<div class="sec-n">Section 11</div>
+<h2>Achievements — task + rank milestones</h2>
+<p class="sec-intro">2 loại: task-based (PvE, phấn đấu bản thân) + rank milestone (PvP, đạt % leaderboard). Mỗi cái có quà riêng. Tạo motivation liên tục cho mọi level.</p>
+
+<div class="card">
+<div class="card-l" style="color:var(--teal)">Task-based achievements (select list)</div>
+<table>
+<thead><tr><th>Badge</th><th>Trigger</th><th>Reward</th></tr></thead>
+<tbody>
+<tr><td>First Steps</td><td>Submit outfit đầu tiên</td><td>+100 currency + badge</td></tr>
+<tr><td>Level Up</td><td>Đạt Great lần đầu</td><td>+200 currency + badge</td></tr>
+<tr><td>Perfection</td><td>Đạt Perfect</td><td>+500 currency + badge + frame</td></tr>
+<tr><td>Heart Magnet</td><td>Nhận 50 total 3-heart votes</td><td>+300 currency + badge</td></tr>
+<tr><td>Love Machine</td><td>Nhận 200 total 3-heart votes</td><td>+800 currency + animated badge</td></tr>
+<tr><td>Theme Explorer</td><td>Submit cả 3 sub-themes</td><td>+300 currency + badge</td></tr>
+<tr><td>Collection Master</td><td>Complete 1 full set</td><td>+500 currency + badge + effect</td></tr>
+<tr><td>Craft Master</td><td>Craft 10 items</td><td>+600 currency + animated badge</td></tr>
+<tr><td>Vote Legend</td><td>Vote 500 outfits</td><td>+1,000 currency + badge + item</td></tr>
+<tr><td>Daily Warrior</td><td>Submit 10/10 ngày</td><td>+800 currency + badge + frame</td></tr>
+<tr><td>Streak Star</td><td>Login 7 ngày (Hall of Fame done)</td><td>+complete set + badge</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card">
+<div class="card-l" style="color:var(--pink)">Rank milestone achievements</div>
+<table>
+<thead><tr><th>Milestone</th><th>Trigger</th><th>Reward</th></tr></thead>
+<tbody>
+<tr><td>Rising Star</td><td>Lần đầu vào top 90% (Apprentice)</td><td>+100 currency + badge</td></tr>
+<tr><td>Fashion Talent</td><td>Top 75% (Stylist)</td><td>+200 currency + badge</td></tr>
+<tr><td>Style Authority</td><td>Top 50% (Designer)</td><td>+400 currency + badge + rare material</td></tr>
+<tr><td>Fashion Elite</td><td>Top 30% (Creative Director)</td><td>+600 currency + badge + 1 set 4★</td></tr>
+<tr><td>Creative Genius</td><td>Top 15% (Style Icon)</td><td>+1,000 currency + animated badge + 1 set 5★</td></tr>
+<tr><td>Trendsetter Status</td><td>Top 10% (Trendsetter)</td><td>+1,500 currency + frame + 1 set 5★</td></tr>
+<tr><td>Crown</td><td>Top 5% (Fashion Queen)</td><td>+3,000 currency + crown frame + 1 set 6★ + Queen title</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="hl hl-g"><strong>Insight:</strong> Task-based = motivation cho casual (craft 3 items, vote 100 outfits = progress dù không top). Rank milestone = motivation cho competitive (push top 5% = exclusive items). Cả 2 cho quà cụ thể → liên tục có "cái để phấn đấu."</div>
+</div>
+
+<!-- SIGN-OFF -->
+<hr class="divider">
+<div style="text-align:center;padding:24px 0;color:var(--tx3);font-size:13px">
+<p style="font-weight:700;color:var(--tx2);margin-bottom:4px">Style Runway Event Proposal v4 — Complete</p>
+<p>11 sections: Diagnostic → Onboarding → Items → Event → Scoring → Voting → Rank → Shop → Economy → Monetization → Achievements</p>
+<p style="margin-top:8px">Companion: <em>Event Mechanics & Scoring Guide</em> (formula details, simulation, craft flow, quest system)</p>
+<p>Smartmove Fashion Game Portfolio &bull; Pilot: 2 SP (T1 + MENA)</p>
+</div>
+
+</div>
+</body>
+</html>
